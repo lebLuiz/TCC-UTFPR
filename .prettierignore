@@ -1,0 +1,11 @@
+# A medicao de LOC (CT-009) cobre src/ das tres aplicacoes e shared/core.
+# Tudo o mais fica fora da padronizacao para nao gerar ruido no diff.
+node_modules
+dist
+.angular
+coverage
+results
+test-results
+tcc2
+*.md
+*.json

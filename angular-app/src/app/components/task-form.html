@@ -1,0 +1,73 @@
+<h2 class="panel-title">{{ isEditing() ? MESSAGES.formLegendEdit : MESSAGES.formLegendCreate }}</h2>
+
+@if (errorMessage() !== '') {
+<p class="message message--error" data-testid="error-message" role="alert">{{ errorMessage() }}</p>
+} @if (successMessage() !== '') {
+<p class="message message--success" data-testid="success-message" role="status">
+  {{ successMessage() }}
+</p>
+}
+
+<form
+  class="task-form"
+  data-testid="task-form"
+  novalidate
+  (submit)="$event.preventDefault(); submitForm.emit()"
+>
+  <div class="form-field">
+    <label class="form-label" for="task-title">{{ MESSAGES.labelTitle }}</label>
+    <input
+      id="task-title"
+      class="form-input"
+      data-testid="task-title-input"
+      type="text"
+      [attr.maxlength]="TITLE_MAX_LENGTH"
+      [placeholder]="MESSAGES.placeholderTitle"
+      [value]="title()"
+      (input)="onTitleInput($event)"
+    />
+    <p class="form-hint">{{ title().length }}/{{ TITLE_MAX_LENGTH }}</p>
+  </div>
+
+  <div class="form-field">
+    <label class="form-label" for="task-description">{{ MESSAGES.labelDescription }}</label>
+    <textarea
+      id="task-description"
+      class="form-textarea"
+      data-testid="task-description-input"
+      [attr.maxlength]="DESCRIPTION_MAX_LENGTH"
+      [placeholder]="MESSAGES.placeholderDescription"
+      [value]="description()"
+      (input)="onDescriptionInput($event)"
+    ></textarea>
+    <p class="form-hint">{{ description().length }}/{{ DESCRIPTION_MAX_LENGTH }}</p>
+  </div>
+
+  <div class="form-checkbox-field">
+    <input
+      id="task-completed"
+      class="form-checkbox"
+      data-testid="task-completed-input"
+      type="checkbox"
+      [checked]="completed()"
+      (change)="onCompletedChange($event)"
+    />
+    <label class="form-label" for="task-completed">{{ MESSAGES.labelCompleted }}</label>
+  </div>
+
+  <div class="form-actions">
+    @if (isEditing()) {
+    <button class="button button--primary" data-testid="save-task-button" type="submit">
+      {{ MESSAGES.buttonSave }}
+    </button>
+    } @else {
+    <button class="button button--primary" data-testid="add-task-button" type="submit">
+      {{ MESSAGES.buttonAdd }}
+    </button>
+    } @if (isEditing()) {
+    <button class="button" data-testid="cancel-edit-button" type="button" (click)="cancel.emit()">
+      {{ MESSAGES.buttonCancel }}
+    </button>
+    }
+  </div>
+</form>

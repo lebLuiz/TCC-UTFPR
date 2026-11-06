@@ -1,0 +1,29 @@
+metrica,teste,comparacao,estatistica,p_valor,p_valor_corrigido,significativo,delta_cliff,tamanho_efeito
+adicionar,Kruskal-Wallis,react vs angular vs vue,21.41773308305752,2.2345925863030476e-05,2.2345925863030476e-05,True,,
+adicionar,Mann-Whitney U,react vs angular,751.0,8.862506407949169e-06,2.6587519223847506e-05,True,0.6688888888888889,grande
+adicionar,Mann-Whitney U,react vs vue,635.5,0.00623074046969689,0.01246148093939378,True,0.4122222222222222,medio
+adicionar,Mann-Whitney U,angular vs vue,303.5,0.03085900795669859,0.03085900795669859,True,-0.32555555555555554,pequeno
+alternar,Kruskal-Wallis,react vs angular vs vue,60.10934587141601,8.859748393674591e-14,8.859748393674591e-14,True,,
+alternar,Mann-Whitney U,react vs angular,900.0,2.7932635089866766e-11,8.37979052696003e-11,True,1.0,grande
+alternar,Mann-Whitney U,react vs vue,638.5,0.0054233962606104035,0.0054233962606104035,True,0.41888888888888887,medio
+alternar,Mann-Whitney U,angular vs vue,25.0,3.236519725696714e-10,6.473039451393428e-10,True,-0.9444444444444444,grande
+atualizar,Kruskal-Wallis,react vs angular vs vue,17.945121586016818,0.0001268429573453161,0.0001268429573453161,True,,
+atualizar,Mann-Whitney U,react vs angular,500.5,0.4594731169977615,0.4594731169977615,False,0.11222222222222222,desprezivel
+atualizar,Mann-Whitney U,react vs vue,731.5,3.211994046862477e-05,9.635982140587433e-05,True,0.6255555555555555,grande
+atualizar,Mann-Whitney U,angular vs vue,652.0,0.0028660074085768475,0.005732014817153695,True,0.4488888888888889,medio
+carga-inicial,Kruskal-Wallis,react vs angular vs vue,31.933792732491916,1.163228448631694e-07,1.163228448631694e-07,True,,
+carga-inicial,Mann-Whitney U,react vs angular,178.5,6.14884447963521e-05,0.0001229768895927042,True,-0.6033333333333334,grande
+carga-inicial,Mann-Whitney U,react vs vue,199.5,0.00021831233470826002,0.00021831233470826002,True,-0.5566666666666666,grande
+carga-inicial,Mann-Whitney U,angular vs vue,789.5,5.357824166681064e-07,1.6073472500043194e-06,True,0.7544444444444445,grande
+remover,Kruskal-Wallis,react vs angular vs vue,57.783103664265596,2.835035266513932e-13,2.835035266513932e-13,True,,
+remover,Mann-Whitney U,react vs angular,886.5,1.0612860712098001e-10,3.1838582136294003e-10,True,0.97,grande
+remover,Mann-Whitney U,react vs vue,623.0,0.010733096906235811,0.010733096906235811,True,0.3844444444444444,medio
+remover,Mann-Whitney U,angular vs vue,23.0,2.6672997890646783e-10,5.334599578129357e-10,True,-0.9488888888888889,grande
+compilacao,Kruskal-Wallis,react vs angular vs vue,79.12087912087912,6.593551417550708e-18,6.593551417550708e-18,True,,
+compilacao,Mann-Whitney U,react vs angular,0.0,3.0198593591621564e-11,9.059578077486469e-11,True,-1.0,grande
+compilacao,Mann-Whitney U,react vs vue,0.0,3.0198593591621564e-11,9.059578077486469e-11,True,-1.0,grande
+compilacao,Mann-Whitney U,angular vs vue,900.0,3.0198593591621564e-11,9.059578077486469e-11,True,1.0,grande
+memoria-heap,Kruskal-Wallis,react vs angular vs vue,79.12087912087912,6.593551417550708e-18,6.593551417550708e-18,True,,
+memoria-heap,Mann-Whitney U,react vs angular,0.0,3.0198593591621564e-11,9.059578077486469e-11,True,-1.0,grande
+memoria-heap,Mann-Whitney U,react vs vue,0.0,3.0198593591621564e-11,9.059578077486469e-11,True,-1.0,grande
+memoria-heap,Mann-Whitney U,angular vs vue,0.0,3.0198593591621564e-11,9.059578077486469e-11,True,-1.0,grande

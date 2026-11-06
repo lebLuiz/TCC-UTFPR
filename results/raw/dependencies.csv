@@ -1,0 +1,4 @@
+framework,diretas_producao,diretas_desenvolvimento,diretas_total,transitivas_total,node_modules_bytes
+react,2,5,7,53,63951232
+angular,5,4,9,385,199074461
+vue,1,5,6,18,60624177

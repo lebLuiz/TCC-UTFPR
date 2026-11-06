@@ -1,0 +1,4 @@
+# Alinhado ao alvo "es2022" configurado no Vite das aplicacoes React e Vue,
+# para que as tres emitam o mesmo nivel de ECMAScript.
+# Ver docs/implementation-decisions.md (decisao D-05).
+Chrome >= 111

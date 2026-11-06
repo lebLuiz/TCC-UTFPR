@@ -1,0 +1,369 @@
+/*
+ * =============================================================================
+ * Núcleo compartilhado: folha de estilos única das três implementações.
+ * =============================================================================
+ *
+ * As três aplicações carregam ESTE arquivo diretamente; não existem cópias.
+ * React e Vue o importam no ponto de entrada; o Angular o declara em
+ * `angular.json`, que é o mecanismo oficial do framework para CSS global.
+ *
+ * Todo o CSS da aplicação vive aqui. Nenhuma das implementações usa estilos
+ * locais de componente (Vue não usa blocos `<style>` em SFC; Angular não usa
+ * `styleUrl`; React não importa CSS por componente). Isso garante que a
+ * aparência seja idêntica e que nenhuma implementação pague um custo de
+ * encapsulamento de estilo que as outras não paguem.
+ *
+ * Sem dependências externas, sem framework de UI, sem fontes remotas.
+ */
+
+/* ----------------------------------------------------------------------------
+ * Reset mínimo e variáveis de tema
+ * -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --cor-fundo: #f4f5f7;
+  --cor-superficie: #ffffff;
+  --cor-borda: #d5d8dd;
+  --cor-texto: #1f2430;
+  --cor-texto-suave: #5c6370;
+  --cor-primaria: #2f5fd0;
+  --cor-primaria-escura: #24499f;
+  --cor-perigo: #c0392b;
+  --cor-perigo-escura: #96291d;
+  --cor-sucesso: #1e7d4f;
+  --cor-sucesso-fundo: #e6f4ec;
+  --cor-erro-fundo: #fbeaea;
+  --cor-concluida-fundo: #eef1f5;
+  --raio: 6px;
+  --espaco: 16px;
+  --fonte: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* ----------------------------------------------------------------------------
+ * Layout geral
+ * -------------------------------------------------------------------------- */
+
+.app {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: var(--espaco);
+}
+
+.app-header {
+  border-bottom: 2px solid var(--cor-borda);
+  margin-bottom: var(--espaco);
+  padding-bottom: var(--espaco);
+}
+
+.app-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.panel {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  margin-bottom: var(--espaco);
+  padding: var(--espaco);
+}
+
+.panel-title {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+/* ----------------------------------------------------------------------------
+ * Formulário
+ * -------------------------------------------------------------------------- */
+
+.form-field {
+  margin-bottom: 12px;
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.form-input,
+.form-textarea {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  color: var(--cor-texto);
+  font-family: inherit;
+  font-size: inherit;
+  padding: 8px 10px;
+  width: 100%;
+}
+
+.form-textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--cor-primaria);
+  outline: 2px solid rgba(47, 95, 208, 0.25);
+  outline-offset: 0;
+}
+
+.form-checkbox-field {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.form-checkbox {
+  height: 16px;
+  margin: 0;
+  width: 16px;
+}
+
+.form-hint {
+  color: var(--cor-texto-suave);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ----------------------------------------------------------------------------
+ * Botões
+ * -------------------------------------------------------------------------- */
+
+.button {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  color: var(--cor-texto);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 14px;
+}
+
+.button:hover {
+  background-color: var(--cor-concluida-fundo);
+}
+
+.button--primary {
+  background-color: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+  color: #ffffff;
+}
+
+.button--primary:hover {
+  background-color: var(--cor-primaria-escura);
+  border-color: var(--cor-primaria-escura);
+}
+
+.button--danger {
+  background-color: var(--cor-perigo);
+  border-color: var(--cor-perigo);
+  color: #ffffff;
+}
+
+.button--danger:hover {
+  background-color: var(--cor-perigo-escura);
+  border-color: var(--cor-perigo-escura);
+}
+
+.button--small {
+  font-size: 13px;
+  padding: 5px 10px;
+}
+
+/* ----------------------------------------------------------------------------
+ * Mensagens de erro e sucesso
+ * -------------------------------------------------------------------------- */
+
+.message {
+  border: 1px solid transparent;
+  border-radius: var(--raio);
+  margin-bottom: 12px;
+  padding: 8px 10px;
+}
+
+.message--error {
+  background-color: var(--cor-erro-fundo);
+  border-color: var(--cor-perigo);
+  color: var(--cor-perigo-escura);
+}
+
+.message--success {
+  background-color: var(--cor-sucesso-fundo);
+  border-color: var(--cor-sucesso);
+  color: var(--cor-sucesso);
+}
+
+/* ----------------------------------------------------------------------------
+ * Indicadores
+ * -------------------------------------------------------------------------- */
+
+.stats {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.stat {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 12px;
+  text-align: center;
+}
+
+.stat-label {
+  color: var(--cor-texto-suave);
+  display: block;
+  font-size: 13px;
+}
+
+.stat-value {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* ----------------------------------------------------------------------------
+ * Lista de tarefas
+ * -------------------------------------------------------------------------- */
+
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.task-item {
+  align-items: flex-start;
+  border-bottom: 1px solid var(--cor-borda);
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+.task-item--completed {
+  background-color: var(--cor-concluida-fundo);
+}
+
+.task-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.task-title {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.task-item--completed .task-title {
+  color: var(--cor-texto-suave);
+  text-decoration: line-through;
+}
+
+.task-description {
+  color: var(--cor-texto-suave);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.task-meta {
+  color: var(--cor-texto-suave);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.task-status {
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 1px 8px;
+}
+
+.task-status--completed {
+  background-color: var(--cor-sucesso-fundo);
+  border-color: var(--cor-sucesso);
+  color: var(--cor-sucesso);
+}
+
+/*
+ * O espaçamento entre o selo de status e o texto vem daqui, e não de um espaço
+ * literal no template. O compilador de SFC do Vue remove espaços no início do
+ * conteúdo de um elemento, enquanto JSX e os templates do Angular os preservam;
+ * usar margem elimina essa diferença entre as três implementações.
+ */
+.task-meta-text {
+  margin-left: 6px;
+}
+
+.task-actions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.empty-state {
+  color: var(--cor-texto-suave);
+  padding: 24px 0;
+  text-align: center;
+}
+
+/* ----------------------------------------------------------------------------
+ * Responsividade
+ * -------------------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .task-item {
+    flex-direction: column;
+  }
+
+  .task-actions {
+    width: 100%;
+  }
+}

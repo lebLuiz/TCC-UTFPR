@@ -1,0 +1,60 @@
+# =============================================================================
+# Orquestracao do ambiente do experimento.
+#
+# Uso basico:
+#   docker compose build            # constroi a imagem (Ubuntu 22.04 + Node 24.16.0)
+#   docker compose run --rm tcc     # abre um shell dentro do ambiente
+#   docker compose run --rm tcc npm run experiment
+# =============================================================================
+services:
+  tcc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NODE_VERSION: "24.16.0"
+        NPM_VERSION: "11.13.0"
+        PLAYWRIGHT_VERSION: "1.63.0"
+    image: tcc-crud-benchmark:1.0.0
+    container_name: tcc-crud-benchmark
+    working_dir: /workspace
+    volumes:
+      # O repositorio inteiro e montado para que os resultados gerados dentro do
+      # container fiquem disponiveis no host (results/raw e results/processed).
+      - .:/workspace
+      # Volumes nomeados para node_modules: evitam que artefatos do host (macOS/
+      # Windows) vazem para dentro do Linux e vice-versa, o que quebraria as
+      # dependencias binarias e contaminaria a medicao de tamanho/dependencias.
+      - node_modules_root:/workspace/node_modules
+      - node_modules_react:/workspace/react-app/node_modules
+      - node_modules_angular:/workspace/angular-app/node_modules
+      - node_modules_vue:/workspace/vue-app/node_modules
+    # Portas publicadas na maquina hospedeira, para abrir as aplicacoes no
+    # navegador. Sao efetivadas por `docker compose up` ou por
+    # `docker compose run --service-ports`.
+    ports:
+      # Servidores de desenvolvimento (com recarga automatica)
+      - "5173:5173"   # React
+      - "5174:5174"   # Vue
+      - "5175:5175"   # Angular
+      # Builds de producao servidos estaticamente
+      - "4173:4173"   # React
+      - "4174:4174"   # Vue
+      - "4175:4175"   # Angular
+    environment:
+      # Deixa o ambiente explicito para os scripts de medicao.
+      TCC_ENV: docker
+      CI: "true"
+    # Necessario para o Chromium do Playwright rodar em container sem --no-sandbox.
+    # 1GB de /dev/shm evita crashes do Chromium ao renderizar 1000 registros.
+    shm_size: "1gb"
+    init: true
+    tty: true
+    stdin_open: true
+    command: ["/bin/bash"]
+
+volumes:
+  node_modules_root:
+  node_modules_react:
+  node_modules_angular:
+  node_modules_vue:

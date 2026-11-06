@@ -1,0 +1,46 @@
+<div class="task-content">
+  <div class="task-title" data-testid="task-item-title">{{ task().title }}</div>
+
+  @if (task().description !== '') {
+  <div class="task-description" data-testid="task-item-description">{{ task().description }}</div>
+  }
+
+  <div class="task-meta">
+    <span
+      class="task-status"
+      [class.task-status--completed]="task().completed"
+      data-testid="task-item-status"
+      >{{ task().completed ? MESSAGES.statusCompleted : MESSAGES.statusPending }}</span
+    >
+    <span class="task-meta-text"
+      >{{ MESSAGES.columnUpdatedAt }}: {{ formatTimestamp(task().updatedAt) }}</span
+    >
+  </div>
+</div>
+
+<div class="task-actions">
+  <button
+    class="button button--small"
+    data-testid="toggle-task-button"
+    type="button"
+    (click)="toggle.emit(task().id)"
+  >
+    {{ task().completed ? MESSAGES.buttonUncomplete : MESSAGES.buttonComplete }}
+  </button>
+  <button
+    class="button button--small"
+    data-testid="edit-task-button"
+    type="button"
+    (click)="edit.emit(task().id)"
+  >
+    {{ MESSAGES.buttonEdit }}
+  </button>
+  <button
+    class="button button--small button--danger"
+    data-testid="delete-task-button"
+    type="button"
+    (click)="delete.emit(task().id)"
+  >
+    {{ MESSAGES.buttonDelete }}
+  </button>
+</div>

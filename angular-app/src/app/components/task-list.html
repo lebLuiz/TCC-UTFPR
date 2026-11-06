@@ -1,0 +1,15 @@
+@if (tasks().length === 0) {
+<p class="empty-state" data-testid="empty-state">{{ MESSAGES.emptyState }}</p>
+} @else {
+<ul class="task-list" data-testid="task-list">
+  @for (task of tasks(); track task.id) {
+  <li
+    app-task-item
+    [task]="task"
+    (edit)="edit.emit($event)"
+    (delete)="delete.emit($event)"
+    (toggle)="toggle.emit($event)"
+  ></li>
+  }
+</ul>
+}

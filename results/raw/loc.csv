@@ -1,0 +1,15 @@
+framework,camada,linguagem,arquivos,linhas_branco,linhas_comentario,linhas_codigo
+react,nucleo,CSS,1,57,47,265
+react,nucleo,TypeScript,2,42,108,205
+react,framework,TypeScript,8,42,17,373
+react,framework,JSON,4,4,0,78
+angular,nucleo,CSS,1,57,47,265
+angular,nucleo,TypeScript,2,42,108,205
+angular,framework,TypeScript,7,38,29,196
+angular,framework,HTML,6,11,0,186
+angular,framework,JSON,4,0,0,137
+vue,nucleo,CSS,1,57,47,265
+vue,nucleo,TypeScript,2,42,108,205
+vue,framework,Vuejs Component,5,45,5,346
+vue,framework,JSON,4,3,0,66
+vue,framework,TypeScript,3,4,12,25

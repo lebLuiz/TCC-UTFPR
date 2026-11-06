@@ -1,0 +1,41 @@
+{
+  "name": "tcc-crud-benchmark",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Analise comparativa de React, Angular e Vue em aplicacoes web do tipo CRUD",
+  "license": "MIT",
+  "engines": {
+    "node": "24.16.0",
+    "npm": "11.13.0"
+  },
+  "scripts": {
+    "verify:shared": "./scripts/verify-shared.sh",
+    "install:all": "./scripts/install-all.sh",
+    "dev": "./scripts/serve.sh dev all",
+    "dev:react": "./scripts/serve.sh dev react",
+    "dev:angular": "./scripts/serve.sh dev angular",
+    "dev:vue": "./scripts/serve.sh dev vue",
+    "preview": "./scripts/serve.sh preview all",
+    "preview:react": "./scripts/serve.sh preview react",
+    "preview:angular": "./scripts/serve.sh preview angular",
+    "preview:vue": "./scripts/serve.sh preview vue",
+    "build:all": "./scripts/build-all.sh",
+    "test:e2e": "./scripts/run-tests.sh",
+    "verify:dataset": "./scripts/verify-dataset.sh",
+    "verify:visual": "node scripts/verify-visual.mjs",
+    "measure:build": "./scripts/measure-build.sh",
+    "measure:runtime": "node scripts/measure-runtime.mjs",
+    "measure:loc": "./scripts/measure-loc.sh",
+    "measure:deps": "./scripts/measure-dependencies.sh",
+    "collect": "./scripts/collect-results.sh",
+    "analyze": "python3 scripts/analyze-results.py",
+    "experiment": "./scripts/collect-results.sh && python3 scripts/analyze-results.py",
+    "format": "prettier --write \"react-app/src/**/*.{ts,tsx}\" \"angular-app/src/**/*.{ts,html}\" \"vue-app/src/**/*.{ts,vue}\" \"shared/core/**/*.ts\"",
+    "format:check": "prettier --check \"react-app/src/**/*.{ts,tsx}\" \"angular-app/src/**/*.{ts,html}\" \"vue-app/src/**/*.{ts,vue}\" \"shared/core/**/*.ts\""
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "prettier": "3.6.2"
+  }
+}

@@ -1,0 +1,35 @@
+<div class="app">
+  <header class="app-header">
+    <h1 class="app-title" data-testid="app-title">{{ MESSAGES.appTitle }}</h1>
+  </header>
+
+  <section
+    app-task-form
+    [title]="draftTitle()"
+    [description]="draftDescription()"
+    [completed]="draftCompleted()"
+    [isEditing]="isEditing()"
+    [errorMessage]="errorMessage()"
+    [successMessage]="successMessage()"
+    (titleChange)="draftTitle.set($event)"
+    (descriptionChange)="draftDescription.set($event)"
+    (completedChange)="draftCompleted.set($event)"
+    (submitForm)="handleSubmit()"
+    (cancel)="handleCancelEdit()"
+  ></section>
+
+  <section
+    app-task-stats
+    [total]="totalCount()"
+    [completed]="completedCount()"
+    [pending]="pendingCount()"
+  ></section>
+
+  <section
+    app-task-list
+    [tasks]="tasks()"
+    (edit)="handleEdit($event)"
+    (delete)="handleDelete($event)"
+    (toggle)="handleToggle($event)"
+  ></section>
+</div>

@@ -1,0 +1,39 @@
+# Dependências
+node_modules/
+
+# Artefatos de build
+dist/
+out-tsc/
+.angular/
+*.tsbuildinfo
+
+# Resultados das medições: VERSIONADOS a partir de 05/11/2026.
+# A coleta publicada é a que o Capítulo 5 da monografia reporta, e o
+# results/raw/environment.json registra a data, a semente e os parâmetros.
+# Uma execução rápida de verificação (REPETITIONS menor que 30) sobrescreve
+# estes arquivos: não faça commit do resultado dela.
+
+# Playwright
+test-results/
+playwright-report/
+.playwright/
+
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Cache do Python
+__pycache__/
+*.pyc
+
+# Monografia (LaTeX, backups, roteiros de defesa): este repositório versiona
+# apenas o projeto técnico (código das três implementações, scripts de coleta
+# e análise, resultados). O documento do TCC não é publicado aqui.
+tcc/

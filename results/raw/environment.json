@@ -1,0 +1,49 @@
+{
+  "iniciado_em": "2026-11-05T20:23:34Z",
+  "sistema_operacional": "Ubuntu 22.04.5 LTS",
+  "kernel": "6.10.14-linuxkit",
+  "arquitetura": "aarch64",
+  "cpu_modelo": "aarch64",
+  "cpu_nucleos": 10,
+  "memoria_total_bytes": 8218034176,
+  "node": "v24.16.0",
+  "npm": "11.13.0",
+  "python": "3.10.12",
+  "cloc": "1.90",
+  "playwright": "Version 1.63.0",
+  "chromium": "153.0.8010.12",
+  "em_container": true,
+  "repeticoes": 30,
+  "aquecimentos": 2,
+  "semente_aleatorizacao": 20261026,
+  "versoes_declaradas": {
+    "react": {
+      "react": "19.2.0",
+      "react-dom": "19.2.0",
+      "@types/react": "19.2.0",
+      "@types/react-dom": "19.2.0",
+      "@vitejs/plugin-react": "5.2.0",
+      "typescript": "6.0.3",
+      "vite": "7.3.2"
+    },
+    "angular": {
+      "@angular/common": "22.0.0",
+      "@angular/compiler": "22.0.0",
+      "@angular/core": "22.0.0",
+      "@angular/platform-browser": "22.0.0",
+      "tslib": "2.8.1",
+      "@angular/build": "22.0.0",
+      "@angular/cli": "22.0.0",
+      "@angular/compiler-cli": "22.0.0",
+      "typescript": "6.0.3"
+    },
+    "vue": {
+      "vue": "3.5.38",
+      "@vitejs/plugin-vue": "6.0.8",
+      "@vue/tsconfig": "0.9.1",
+      "typescript": "6.0.3",
+      "vite": "7.3.2",
+      "vue-tsc": "3.3.11"
+    }
+  }
+}
