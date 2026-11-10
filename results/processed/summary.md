@@ -14,59 +14,59 @@
 
 ### Adicionar tarefa (ms)
 
-| framework | n | media | mediana | desvio_padrao | coef_variacao_pct | minimo | maximo | p95 | ic95_inferior | ic95_superior |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| react | 30 | 23.78 | 25.95 | 4.40 | 18.50 | 17.10 | 29.80 | 28.73 | 22.14 | 25.42 |
-| angular | 30 | 17.82 | 17.25 | 3.95 | 22.16 | 10.50 | 24.10 | 23.47 | 16.34 | 19.29 |
-| vue | 30 | 20.13 | 20.95 | 3.66 | 18.17 | 12.10 | 25.40 | 23.86 | 18.76 | 21.50 |
+| framework | n | media | mediana | iqr | desvio_padrao | coef_variacao_pct | minimo | maximo | p95 | ic95_inferior | ic95_superior |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| react | 30 | 23.78 | 25.95 | 8.18 | 4.40 | 18.50 | 17.10 | 29.80 | 28.73 | 22.14 | 25.42 |
+| angular | 30 | 17.82 | 17.25 | 5.88 | 3.95 | 22.16 | 10.50 | 24.10 | 23.47 | 16.34 | 19.29 |
+| vue | 30 | 20.13 | 20.95 | 2.80 | 3.66 | 18.17 | 12.10 | 25.40 | 23.86 | 18.76 | 21.50 |
 
 ### Alternar conclusão (ms)
 
-| framework | n | media | mediana | desvio_padrao | coef_variacao_pct | minimo | maximo | p95 | ic95_inferior | ic95_superior |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| react | 30 | 19.01 | 17.80 | 3.60 | 18.93 | 15.30 | 25.60 | 24.77 | 17.67 | 20.36 |
-| angular | 30 | 5.27 | 4.90 | 0.91 | 17.31 | 4.50 | 9.00 | 6.90 | 4.93 | 5.61 |
-| vue | 30 | 14.13 | 15.90 | 5.84 | 41.31 | 6.10 | 23.10 | 22.11 | 11.95 | 16.31 |
+| framework | n | media | mediana | iqr | desvio_padrao | coef_variacao_pct | minimo | maximo | p95 | ic95_inferior | ic95_superior |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| react | 30 | 19.01 | 17.80 | 6.93 | 3.60 | 18.93 | 15.30 | 25.60 | 24.77 | 17.67 | 20.36 |
+| angular | 30 | 5.27 | 4.90 | 0.38 | 0.91 | 17.31 | 4.50 | 9.00 | 6.90 | 4.93 | 5.61 |
+| vue | 30 | 14.13 | 15.90 | 11.62 | 5.84 | 41.31 | 6.10 | 23.10 | 22.11 | 11.95 | 16.31 |
 
 ### Atualizar tarefa (ms)
 
-| framework | n | media | mediana | desvio_padrao | coef_variacao_pct | minimo | maximo | p95 | ic95_inferior | ic95_superior |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| react | 30 | 24.42 | 24.40 | 1.18 | 4.83 | 22.40 | 26.50 | 26.40 | 23.98 | 24.86 |
-| angular | 30 | 24.15 | 23.85 | 2.06 | 8.55 | 17.90 | 28.00 | 27.41 | 23.38 | 24.92 |
-| vue | 30 | 22.46 | 22.80 | 1.83 | 8.13 | 18.80 | 25.20 | 24.71 | 21.77 | 23.14 |
+| framework | n | media | mediana | iqr | desvio_padrao | coef_variacao_pct | minimo | maximo | p95 | ic95_inferior | ic95_superior |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| react | 30 | 24.42 | 24.40 | 1.40 | 1.18 | 4.83 | 22.40 | 26.50 | 26.40 | 23.98 | 24.86 |
+| angular | 30 | 24.15 | 23.85 | 2.35 | 2.06 | 8.55 | 17.90 | 28.00 | 27.41 | 23.38 | 24.92 |
+| vue | 30 | 22.46 | 22.80 | 2.68 | 1.83 | 8.13 | 18.80 | 25.20 | 24.71 | 21.77 | 23.14 |
 
 ### Carga inicial (1000 registros) (ms)
 
-| framework | n | media | mediana | desvio_padrao | coef_variacao_pct | minimo | maximo | p95 | ic95_inferior | ic95_superior |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| react | 30 | 119.06 | 116.05 | 7.06 | 5.93 | 112.80 | 135.20 | 133.70 | 116.42 | 121.70 |
-| angular | 30 | 124.42 | 124.15 | 2.40 | 1.93 | 120.00 | 130.50 | 128.62 | 123.52 | 125.31 |
-| vue | 30 | 120.76 | 120.20 | 2.08 | 1.72 | 117.10 | 125.90 | 125.16 | 119.98 | 121.53 |
+| framework | n | media | mediana | iqr | desvio_padrao | coef_variacao_pct | minimo | maximo | p95 | ic95_inferior | ic95_superior |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| react | 30 | 119.06 | 116.05 | 4.43 | 7.06 | 5.93 | 112.80 | 135.20 | 133.70 | 116.42 | 121.70 |
+| angular | 30 | 124.42 | 124.15 | 2.28 | 2.40 | 1.93 | 120.00 | 130.50 | 128.62 | 123.52 | 125.31 |
+| vue | 30 | 120.76 | 120.20 | 1.92 | 2.08 | 1.72 | 117.10 | 125.90 | 125.16 | 119.98 | 121.53 |
 
 ### Remover tarefa (ms)
 
-| framework | n | media | mediana | desvio_padrao | coef_variacao_pct | minimo | maximo | p95 | ic95_inferior | ic95_superior |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| react | 30 | 23.02 | 21.60 | 2.72 | 11.82 | 20.30 | 29.10 | 27.55 | 22.00 | 24.04 |
-| angular | 30 | 10.61 | 10.10 | 2.05 | 19.33 | 9.80 | 21.20 | 11.57 | 9.84 | 11.37 |
-| vue | 30 | 18.92 | 19.00 | 5.86 | 30.98 | 11.00 | 28.70 | 27.51 | 16.73 | 21.10 |
+| framework | n | media | mediana | iqr | desvio_padrao | coef_variacao_pct | minimo | maximo | p95 | ic95_inferior | ic95_superior |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| react | 30 | 23.02 | 21.60 | 4.52 | 2.72 | 11.82 | 20.30 | 29.10 | 27.55 | 22.00 | 24.04 |
+| angular | 30 | 10.61 | 10.10 | 0.30 | 2.05 | 19.33 | 9.80 | 21.20 | 11.57 | 9.84 | 11.37 |
+| vue | 30 | 18.92 | 19.00 | 10.95 | 5.86 | 30.98 | 11.00 | 28.70 | 27.51 | 16.73 | 21.10 |
 
 ### Tempo de compilação (ms)
 
-| framework | n | media | mediana | desvio_padrao | coef_variacao_pct | minimo | maximo | p95 | ic95_inferior | ic95_superior |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| react | 30 | 1439.35 | 1437.64 | 9.80 | 0.68 | 1419.60 | 1464.40 | 1458.27 | 1435.69 | 1443.00 |
-| angular | 30 | 2235.59 | 2220.61 | 51.22 | 2.29 | 2168.21 | 2383.44 | 2323.20 | 2216.47 | 2254.72 |
-| vue | 30 | 1734.92 | 1733.46 | 13.92 | 0.80 | 1718.15 | 1782.16 | 1754.38 | 1729.72 | 1740.12 |
+| framework | n | media | mediana | iqr | desvio_padrao | coef_variacao_pct | minimo | maximo | p95 | ic95_inferior | ic95_superior |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| react | 30 | 1439.35 | 1437.64 | 10.12 | 9.80 | 0.68 | 1419.60 | 1464.40 | 1458.27 | 1435.69 | 1443.00 |
+| angular | 30 | 2235.59 | 2220.61 | 59.97 | 51.22 | 2.29 | 2168.21 | 2383.44 | 2323.20 | 2216.47 | 2254.72 |
+| vue | 30 | 1734.92 | 1733.46 | 16.64 | 13.92 | 0.80 | 1718.15 | 1782.16 | 1754.38 | 1729.72 | 1740.12 |
 
 ### Memória JS após a carga (MiB)
 
-| framework | n | media | mediana | desvio_padrao | coef_variacao_pct | minimo | maximo | p95 | ic95_inferior | ic95_superior |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| react | 30 | 5.58 | 5.59 | 0.01 | 0.24 | 5.56 | 5.61 | 5.60 | 5.58 | 5.59 |
-| angular | 30 | 7.41 | 7.40 | 0.03 | 0.45 | 7.35 | 7.48 | 7.48 | 7.40 | 7.42 |
-| vue | 30 | 7.77 | 7.77 | 0.02 | 0.25 | 7.73 | 7.81 | 7.79 | 7.76 | 7.77 |
+| framework | n | media | mediana | iqr | desvio_padrao | coef_variacao_pct | minimo | maximo | p95 | ic95_inferior | ic95_superior |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| react | 30 | 5.58 | 5.59 | 0.02 | 0.01 | 0.24 | 5.56 | 5.61 | 5.60 | 5.58 | 5.59 |
+| angular | 30 | 7.41 | 7.40 | 0.05 | 0.03 | 0.45 | 7.35 | 7.48 | 7.48 | 7.40 | 7.42 |
+| vue | 30 | 7.77 | 7.77 | 0.03 | 0.02 | 0.25 | 7.73 | 7.81 | 7.79 | 7.76 | 7.77 |
 
 ## Testes de hipótese
 
@@ -102,6 +102,37 @@ Kruskal-Wallis como teste omnibus; havendo diferença, Mann-Whitney U em cada pa
 | memoria-heap | Mann-Whitney U | react vs angular | 0.0000 | 0.0000 | 0.0000 | True | -1.0000 | grande |
 | memoria-heap | Mann-Whitney U | react vs vue | 0.0000 | 0.0000 | 0.0000 | True | -1.0000 | grande |
 | memoria-heap | Mann-Whitney U | angular vs vue | 0.0000 | 0.0000 | 0.0000 | True | -1.0000 | grande |
+
+## Análise de sensibilidade (não registrada previamente)
+
+Friedman como omnibus e Wilcoxon pareado em cada par, com correção de Holm, nas métricas intercaladas por rodada. Os resultados reportados na monografia são os do plano registrado; esta tabela verifica se algum veredito depende da escolha entre teste independente e pareado.
+
+| metrica | teste | comparacao | n_rodadas | estatistica | p_valor | p_valor_corrigido | significativo | significativo_plano_registrado | coincide |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| carga-inicial | Friedman | react vs angular vs vue | 30 | 26.4370 | 0.0000 | 0.0000 | True | True | True |
+| carga-inicial | Wilcoxon pareado | react vs angular | 30 | 71.0000 | 0.0009 | 0.0018 | True | True | True |
+| carga-inicial | Wilcoxon pareado | react vs vue | 30 | 153.0000 | 0.1631 | 0.1631 | False | True | False |
+| carga-inicial | Wilcoxon pareado | angular vs vue | 30 | 4.0000 | 0.0000 | 0.0000 | True | True | True |
+| adicionar | Friedman | react vs angular vs vue | 30 | 12.2000 | 0.0022 | 0.0022 | True | True | True |
+| adicionar | Wilcoxon pareado | react vs angular | 30 | 50.5000 | 0.0002 | 0.0005 | True | True | True |
+| adicionar | Wilcoxon pareado | react vs vue | 30 | 92.5000 | 0.0040 | 0.0080 | True | True | True |
+| adicionar | Wilcoxon pareado | angular vs vue | 30 | 110.0000 | 0.0117 | 0.0117 | True | True | True |
+| atualizar | Friedman | react vs angular vs vue | 30 | 9.1695 | 0.0102 | 0.0102 | True | True | True |
+| atualizar | Wilcoxon pareado | react vs angular | 30 | 186.5000 | 0.5026 | 0.5026 | False | False | True |
+| atualizar | Wilcoxon pareado | react vs vue | 30 | 48.5000 | 0.0002 | 0.0005 | True | True | True |
+| atualizar | Wilcoxon pareado | angular vs vue | 30 | 83.0000 | 0.0036 | 0.0073 | True | True | True |
+| remover | Friedman | react vs angular vs vue | 30 | 44.0667 | 0.0000 | 0.0000 | True | True | True |
+| remover | Wilcoxon pareado | react vs angular | 30 | 0.0000 | 0.0000 | 0.0000 | True | True | True |
+| remover | Wilcoxon pareado | react vs vue | 30 | 96.5000 | 0.0051 | 0.0051 | True | True | True |
+| remover | Wilcoxon pareado | angular vs vue | 30 | 1.0000 | 0.0000 | 0.0000 | True | True | True |
+| alternar | Friedman | react vs angular vs vue | 30 | 44.6000 | 0.0000 | 0.0000 | True | True | True |
+| alternar | Wilcoxon pareado | react vs angular | 30 | 0.0000 | 0.0000 | 0.0000 | True | True | True |
+| alternar | Wilcoxon pareado | react vs vue | 30 | 75.0000 | 0.0007 | 0.0007 | True | True | True |
+| alternar | Wilcoxon pareado | angular vs vue | 30 | 9.0000 | 0.0000 | 0.0000 | True | True | True |
+| memoria-heap | Friedman | react vs angular vs vue | 30 | 60.0000 | 0.0000 | 0.0000 | True | True | True |
+| memoria-heap | Wilcoxon pareado | react vs angular | 30 | 0.0000 | 0.0000 | 0.0000 | True | True | True |
+| memoria-heap | Wilcoxon pareado | react vs vue | 30 | 0.0000 | 0.0000 | 0.0000 | True | True | True |
+| memoria-heap | Wilcoxon pareado | angular vs vue | 30 | 0.0000 | 0.0000 | 0.0000 | True | True | True |
 
 ## Tamanho do build de produção
 

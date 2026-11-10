@@ -587,8 +587,8 @@ não é corrigida ali: a regra fixada na introdução deste documento — um reg
 datado não é reescrito, a mudança entra em adendo — aplica-se também a este
 caso.
 
-**O que isso afeta.** A defesa contra HARKing que a \autoref{sub:preregistro}
-da monografia descreve repousa especificamente em o histórico de commits ser
+**O que isso afeta.** A defesa contra HARKing que a seção 4.2.9 (Registro
+antecipado das hipóteses) da monografia descreve repousa especificamente em o histórico de commits ser
 público e anterior à coleta, verificável por qualquer leitor. Essa verificação
 deixou de ser possível: não há mais como um leitor conferir, a partir do Git,
 que a redação das hipóteses antecedeu a coleta definitiva. O conteúdo deste
@@ -605,8 +605,8 @@ histórico do Git para estarem corretos — dependem da auditoria de código fei
 no § 7, que qualquer leitor pode refazer a partir do estado atual dos arquivos,
 independentemente de commits antigos existirem.
 
-**Decisão sobre o texto da monografia.** A \autoref{sub:preregistro} e a lista
-de contribuições metodológicas em \autoref{sec:conc-contribuicoes} afirmam que
+**Decisão sobre o texto da monografia.** A seção 4.2.9 e a lista de
+contribuições metodológicas na seção 6.3 da monografia afirmam que
 o registro é verificável, e não apenas declarado, por meio do histórico público
 do repositório. Essa afirmação precisa ser revista antes da entrega final, para
 não reivindicar uma garantia que deixou de existir. A revisão não foi feita
@@ -620,3 +620,52 @@ original — de 26 de outubro de 2026 — precedeu a coleta de 27 de outubro. Es
 cronologia específica passa a depender da data registrada no cabeçalho deste
 arquivo e da boa-fé do autor, exatamente a condição que o registro antecipado
 foi criado para superar.
+
+---
+
+## 9. Adendo de 9 de novembro de 2026 — substituição da coleta de 27 de outubro, ordem da compilação e análise de sensibilidade
+
+Este adendo é redigido depois dos fatos que registra, durante a revisão final
+pedida pela orientação. Ele não altera hipótese, limiar, regra de decisão nem
+valor reportado.
+
+**A substituição da coleta de 27 de outubro.** A coleta definitiva prevista neste
+documento foi executada em 27 de outubro de 2026, com 30 repetições por célula, e
+seus valores foram os da primeira redação da monografia. Em 2 de novembro, uma
+execução de teste com 10 repetições, feita para conferir o funcionamento do
+ambiente, sobrescreveu `results/`, que ainda não era versionado, e os dados
+brutos de 27 de outubro se perderam. As medianas publicadas puderam ser
+reconstruídas a partir dos pontos vetoriais dos gráficos de caixa, o que confirma
+que foram medidas, mas reconstrução não é dado bruto. A decisão de recoletar foi
+tomada antes de existir qualquer dado novo, porque era o único modo de publicar
+dados brutos compatíveis com os números reportados.
+
+Houve três execuções em 5 de novembro. Na primeira, a variável `REPETITIONS` não
+estava exportada para os processos filhos, e as medições no navegador e de
+memória saíram com 10 repetições, embora a compilação tivesse 30: a execução era
+inválida por construção e foi descartada. A segunda é a de 19h47 UTC, descartada
+pelo § 7. A terceira, de 20h23 UTC, é a definitiva. Nenhuma das substituições
+decorreu do resultado obtido.
+
+**A ordem da compilação.** A monografia descrevia toda a coleta como intercalada
+por rodadas. A intercalação foi implementada nas medições no navegador e de
+memória (`measure-runtime.mjs`); a compilação (`measure-build.sh`) manteve a ordem
+fixa React, Angular, Vue. A monografia passou a declarar a ordem fixa da
+compilação como ameaça à validade interna, com a verificação de que nenhum dos
+três blocos apresentou tendência entre a ordem da repetição e o tempo medido.
+
+**A análise de sensibilidade.** A orientação pediu que se conferisse a adequação
+dos testes à coleta intercalada e a independência das observações. O roteiro de
+análise passou a calcular, sem alterar os resultados do plano registrado, a
+tendência temporal e a autocorrelação de cada célula, a correlação entre
+frameworks na mesma rodada e as comparações com Friedman e Wilcoxon pareado, sob
+a mesma correção de Holm. A análise **não** foi registrada antes da coleta e é
+reportada como sensibilidade. Os seis testes omnibus permaneceram significativos,
+e 17 dos 18 vereditos par a par coincidiram com os do plano registrado. A exceção
+é React contra Vue na carga inicial, que deixa de ser significativa sob o teste
+pareado (p corrigido 0,16). Nenhum veredito de hipótese depende dessa comparação,
+porque H7 trata de ordem de magnitude e não de significância.
+
+**O texto da monografia.** As frases que afirmavam que o histórico do repositório
+permite verificar, de forma independente do autor, que as hipóteses precedem a
+coleta foram reescritas para declarar a perda registrada no § 8.

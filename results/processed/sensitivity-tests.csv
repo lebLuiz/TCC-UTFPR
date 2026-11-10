@@ -1,0 +1,25 @@
+metrica,teste,comparacao,n_rodadas,estatistica,p_valor,p_valor_corrigido,significativo,significativo_plano_registrado,coincide
+carga-inicial,Friedman,react vs angular vs vue,30,26.43697478991594,1.816702715139644e-06,1.816702715139644e-06,True,True,True
+carga-inicial,Wilcoxon pareado,react vs angular,30,71.0,0.0008938671180648371,0.0017877342361296742,True,True,True
+carga-inicial,Wilcoxon pareado,react vs vue,30,153.0,0.16308279627460742,0.16308279627460742,False,True,False
+carga-inicial,Wilcoxon pareado,angular vs vue,30,4.0,2.59699818904829e-06,7.79099456714487e-06,True,True,True
+adicionar,Friedman,react vs angular vs vue,30,12.199999999999989,0.002242867719485815,0.002242867719485815,True,True,True
+adicionar,Wilcoxon pareado,react vs angular,30,50.5,0.0001814480518475392,0.0005443441555426176,True,True,True
+adicionar,Wilcoxon pareado,react vs vue,30,92.5,0.003979326201897352,0.007958652403794704,True,True,True
+adicionar,Wilcoxon pareado,angular vs vue,30,110.0,0.011743660161690107,0.011743660161690107,True,True,True
+atualizar,Friedman,react vs angular vs vue,30,9.169491525423714,0.010206344291219535,0.010206344291219535,True,True,True
+atualizar,Wilcoxon pareado,react vs angular,30,186.5,0.5025793832819173,0.5025793832819173,False,False,True
+atualizar,Wilcoxon pareado,react vs vue,30,48.5,0.0001534768173963248,0.00046043045218897437,True,True,True
+atualizar,Wilcoxon pareado,angular vs vue,30,83.0,0.003631781528234074,0.007263563056468148,True,True,True
+remover,Friedman,react vs angular vs vue,30,44.06666666666666,2.6980184512036645e-10,2.6980184512036645e-10,True,True,True
+remover,Wilcoxon pareado,react vs angular,30,0.0,1.7278603148724105e-06,5.183580944617231e-06,True,True,True
+remover,Wilcoxon pareado,react vs vue,30,96.5,0.005147362147918721,0.005147362147918721,True,True,True
+remover,Wilcoxon pareado,angular vs vue,30,1.0,1.9185250858625864e-06,5.183580944617231e-06,True,True,True
+alternar,Friedman,react vs angular vs vue,30,44.60000000000002,2.066488789207559e-10,2.066488789207559e-10,True,True,True
+alternar,Wilcoxon pareado,react vs angular,30,0.0,1.7224282827430737e-06,5.167284848229221e-06,True,True,True
+alternar,Wilcoxon pareado,react vs vue,30,75.0,0.0007296018302440643,0.0007296018302440643,True,True,True
+alternar,Wilcoxon pareado,angular vs vue,30,9.0,4.273204769987968e-06,8.546409539975936e-06,True,True,True
+memoria-heap,Friedman,react vs angular vs vue,30,60.0,9.357622968840163e-14,9.357622968840163e-14,True,True,True
+memoria-heap,Wilcoxon pareado,react vs angular,30,0.0,1.862645149230957e-09,5.587935447692871e-09,True,True,True
+memoria-heap,Wilcoxon pareado,react vs vue,30,0.0,1.862645149230957e-09,5.587935447692871e-09,True,True,True
+memoria-heap,Wilcoxon pareado,angular vs vue,30,0.0,1.862645149230957e-09,5.587935447692871e-09,True,True,True

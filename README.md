@@ -189,8 +189,8 @@ Estes comandos exigem `--service-ports` no `docker compose run`. Ver
 
 | Comando | O que faz |
 | --- | --- |
-| `npm run collect` | Executa as nove etapas da coleta, com as pré-condições de validade |
-| `npm run analyze` | Gera a estatística e o `results/processed/summary.md` |
+| `npm run collect` | Executa as dez etapas da coleta, com as pré-condições de validade |
+| `npm run analyze` | Refaz toda a estatística a partir de `results/raw/`, inclusive a verificação de independência e a análise de sensibilidade, e gera o `results/processed/summary.md` |
 | `npm run experiment` | `collect` seguido de `analyze` |
 
 ### Parâmetros

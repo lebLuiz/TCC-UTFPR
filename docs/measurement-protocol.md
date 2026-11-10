@@ -218,6 +218,15 @@ transforma o desenho em blocos pareados por rodada, o que habilita Friedman com
 Wilcoxon pareado no lugar de Kruskal-Wallis com Mann-Whitney. Enquanto a ordem
 for fixa, a deriva precisa constar como ameaça à validade interna (§6).
 
+**Situação na coleta definitiva.** A intercalação foi implementada nas medições
+no navegador e de memória (`measure-runtime.mjs`, CT-003 a CT-008), com a ordem
+realizada gravada em `results/raw/execution-order.csv`. A compilação
+(`measure-build.sh`, CT-001) manteve a ordem fixa React, Angular, Vue, e a deriva
+entre esses blocos consta como ameaça à validade interna na monografia. O plano
+registrado manteve Kruskal-Wallis com Mann-Whitney; Friedman com Wilcoxon
+pareado foi aplicado depois, como análise de sensibilidade
+(`results/processed/sensitivity-tests.csv`).
+
 **Mesma camada de entrega.** As três são servidas pelo mesmo servidor estático,
 a partir do build de produção (ver D-10).
 

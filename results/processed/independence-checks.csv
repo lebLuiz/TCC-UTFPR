@@ -1,0 +1,61 @@
+verificacao,metrica,grupo,n,estatistica,p_valor
+tendencia_temporal,compilacao,react,30,-0.07541713014460512,0.6920391624734634
+autocorrelacao_lag1,compilacao,react,30,0.15126817456013977,
+tendencia_temporal,compilacao,angular,30,-0.09365962180200223,0.622520427359527
+autocorrelacao_lag1,compilacao,angular,30,0.03064864547021273,
+tendencia_temporal,compilacao,vue,30,0.24760845383759733,0.18709103016043782
+autocorrelacao_lag1,compilacao,vue,30,-0.081225487563723,
+tendencia_temporal,carga-inicial,react,30,0.2597373949741151,0.16571199790533983
+autocorrelacao_lag1,carga-inicial,react,30,0.17222288403647917,
+tendencia_temporal,carga-inicial,angular,30,0.4239457229642254,0.019558473940602776
+autocorrelacao_lag1,carga-inicial,angular,30,0.13668645546551808,
+tendencia_temporal,carga-inicial,vue,30,0.3416102372228724,0.0646606898284072
+autocorrelacao_lag1,carga-inicial,vue,30,0.3575636241231006,
+tendencia_temporal,adicionar,react,30,0.0589675136984187,0.7569230025373742
+autocorrelacao_lag1,adicionar,react,30,-0.03350055595694262,
+tendencia_temporal,adicionar,angular,30,-0.04628393528026827,0.8081095228759971
+autocorrelacao_lag1,adicionar,angular,30,-0.11067240852060758,
+tendencia_temporal,adicionar,vue,30,-0.4288894259769664,0.018035444595614174
+autocorrelacao_lag1,adicionar,vue,30,0.2456276221392036,
+tendencia_temporal,atualizar,react,30,0.25487383303045824,0.17406548930196653
+autocorrelacao_lag1,atualizar,react,30,-0.1720986795801756,
+tendencia_temporal,atualizar,angular,30,-0.06211043237334249,0.7443846240411509
+autocorrelacao_lag1,atualizar,angular,30,-0.47727458766795533,
+tendencia_temporal,atualizar,vue,30,-0.13569535221961235,0.4746274046865232
+autocorrelacao_lag1,atualizar,vue,30,0.21776297815015017,
+tendencia_temporal,remover,react,30,0.22031652560168896,0.24204469065831832
+autocorrelacao_lag1,remover,react,30,-0.48826984237397925,
+tendencia_temporal,remover,angular,30,0.36418214534935694,0.04787379833857343
+autocorrelacao_lag1,remover,angular,30,-0.030828927173291804,
+tendencia_temporal,remover,vue,30,0.11243463282325868,0.5541566511318978
+autocorrelacao_lag1,remover,vue,30,-0.3667753848840551,
+tendencia_temporal,alternar,react,30,-0.15076279700122858,0.426476838381989
+autocorrelacao_lag1,alternar,react,30,0.22921541636752313,
+tendencia_temporal,alternar,angular,30,0.33332375888444216,0.07186290238869344
+autocorrelacao_lag1,alternar,angular,30,0.0014455617303041374,
+tendencia_temporal,alternar,vue,30,0.06882731526392429,0.7178055453110882
+autocorrelacao_lag1,alternar,vue,30,-0.06083221688643664,
+tendencia_temporal,memoria-heap,react,30,-0.07408231368186874,0.6972322835738773
+autocorrelacao_lag1,memoria-heap,react,30,-0.15788962649226182,
+tendencia_temporal,memoria-heap,angular,30,0.2387096774193548,0.20395266872419
+autocorrelacao_lag1,memoria-heap,angular,30,-0.1931410514660167,
+tendencia_temporal,memoria-heap,vue,30,0.0135706340378198,0.943259139365723
+autocorrelacao_lag1,memoria-heap,vue,30,-0.07159621305722239,
+correlacao_na_rodada,carga-inicial,react vs angular,30,0.3610152532666547,0.04999431525198378
+correlacao_na_rodada,carga-inicial,react vs vue,30,0.044892510026786465,0.813776551797698
+correlacao_na_rodada,carga-inicial,angular vs vue,30,0.44742714380119963,0.013170173540102748
+correlacao_na_rodada,adicionar,react vs angular,30,-0.2057645225906967,0.2753366669336288
+correlacao_na_rodada,adicionar,react vs vue,30,-0.0486420314813659,0.7985272527734083
+correlacao_na_rodada,adicionar,angular vs vue,30,0.015694568510005932,0.9343963118381762
+correlacao_na_rodada,atualizar,react vs angular,30,0.21090185887612778,0.26326241393978417
+correlacao_na_rodada,atualizar,react vs vue,30,-0.06616088404449155,0.7283201172570898
+correlacao_na_rodada,atualizar,angular vs vue,30,0.02764772559997955,0.8846906015269661
+correlacao_na_rodada,remover,react vs angular,30,0.31205751439680796,0.0931907653607402
+correlacao_na_rodada,remover,react vs vue,30,-0.10723443868221942,0.5727402324448876
+correlacao_na_rodada,remover,angular vs vue,30,0.26765122549274223,0.15273552787697386
+correlacao_na_rodada,alternar,react vs angular,30,-0.05594805471743589,0.7690261266759688
+correlacao_na_rodada,alternar,react vs vue,30,-0.03745819491102374,0.8442048830815644
+correlacao_na_rodada,alternar,angular vs vue,30,-0.20229280514078382,0.28369524119934875
+correlacao_na_rodada,memoria-heap,react vs angular,30,-0.39621802002224693,0.03019246286218911
+correlacao_na_rodada,memoria-heap,react vs vue,30,-0.09187986651835373,0.6291762510393837
+correlacao_na_rodada,memoria-heap,angular vs vue,30,0.1911012235817575,0.3117339683386094

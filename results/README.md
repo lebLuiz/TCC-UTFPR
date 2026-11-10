@@ -1,8 +1,10 @@
 # Resultados
 
-Este diretório recebe os dados produzidos pelo experimento. Ele começa vazio: os
-arquivos são gerados por `scripts/collect-results.sh` e
-`scripts/analyze-results.py`.
+Este diretório contém os dados da coleta definitiva reportada na monografia,
+de 5 de novembro de 2026, às 20h23 UTC (`raw/environment.json`). Os arquivos são
+gerados por `scripts/collect-results.sh` e `scripts/analyze-results.py`; uma nova
+coleta os sobrescreve. Para refazer só a análise a partir destes dados brutos:
+`docker compose run --rm tcc npm run analyze`.
 
 ```
 results/
@@ -22,6 +24,7 @@ results/
 | `loc.csv` | linhas de código por camada e linguagem | `framework,camada,linguagem,arquivos,linhas_branco,linhas_comentario,linhas_codigo` |
 | `dependencies.csv` | dependências diretas, transitivas e tamanho em disco | `framework,diretas_producao,diretas_desenvolvimento,diretas_total,transitivas_total,node_modules_bytes` |
 | `e2e-report.json` | resultado da suíte funcional nos três frameworks | — |
+| `execution-order.csv` | ordem realizada da coleta intercalada no navegador | `rodada,posicao,framework,metrica` |
 
 Valores de `metrica` em `runtime.csv`: `carga-inicial`, `adicionar`,
 `atualizar`, `remover`, `alternar`.
@@ -33,8 +36,10 @@ importado pelas três) e `framework` (código específico de cada uma).
 
 | Arquivo | Conteúdo |
 | --- | --- |
-| `descriptive-stats.csv` | n, média, mediana, desvio padrão, coeficiente de variação, mínimo, máximo, p95, IC 95% e p-valor de Shapiro-Wilk |
-| `statistical-tests.csv` | Kruskal-Wallis e Mann-Whitney U pareado com Bonferroni, mais o delta de Cliff |
+| `descriptive-stats.csv` | n, média, mediana, quartis e intervalo interquartil, desvio padrão, coeficiente de variação, mínimo, máximo, p95, IC 95% e p-valor de Shapiro-Wilk |
+| `statistical-tests.csv` | plano registrado: Kruskal-Wallis e Mann-Whitney U (amostras independentes) com correção de Holm, mais o delta de Cliff |
+| `independence-checks.csv` | tendência temporal e autocorrelação por célula, e correlação entre frameworks na mesma rodada |
+| `sensitivity-tests.csv` | análise de sensibilidade não registrada previamente: Friedman e Wilcoxon pareado com Holm, comparados ao plano registrado |
 | `build-summary.csv` | tamanho do build por framework, separando a carga entregue ao navegador (HTML + JS + CSS) dos metadados de build |
 | `loc-summary.csv` | linhas de código por camada |
 | `summary.md` | relatório legível com todas as tabelas |

@@ -8,6 +8,8 @@ Lê os arquivos brutos de `results/raw/` e produz, em `results/processed/`:
 
     descriptive-stats.csv   estatística descritiva de cada métrica
     statistical-tests.csv   testes de hipótese entre os três frameworks
+    independence-checks.csv verificação de independência das observações
+    sensitivity-tests.csv   análise de sensibilidade com teste pareado
     build-summary.csv       tamanho do build consolidado por framework
     loc-summary.csv         linhas de código por camada
     summary.md              relatório legível com todas as tabelas
@@ -27,6 +29,14 @@ sistema operacional e por coleta de lixo. Por isso o roteiro é:
 
 A mediana é reportada junto da média porque é mais robusta a valores extremos,
 e o intervalo de confiança de 95% da média usa a distribuição t de Student.
+Os quartis usam interpolação linear entre as observações (padrão do NumPy,
+tipo 7 de Hyndman e Fan); o intervalo interquartil reportado na monografia é
+q3 - q1, nas colunas `q1`, `q3` e `iqr` de descriptive-stats.csv.
+
+Depois da coleta, a pedido da orientação, o roteiro passou a verificar também
+a independência das observações e a repetir as comparações com o teste pareado
+(Friedman e Wilcoxon), sem alterar os resultados do plano registrado. Ver a
+seção "Verificação de independência e análise de sensibilidade" abaixo.
 
 Uso: python3 scripts/analyze-results.py
 """
@@ -78,6 +88,9 @@ def descrever(valores: np.ndarray) -> dict:
         'n': n,
         'media': media,
         'mediana': float(np.median(valores)),
+        'q1': float(np.percentile(valores, 25)),
+        'q3': float(np.percentile(valores, 75)),
+        'iqr': float(np.percentile(valores, 75) - np.percentile(valores, 25)),
         'desvio_padrao': desvio,
         # Coeficiente de variação: dispersão relativa, útil para julgar se a
         # medição foi estável o bastante para ser comparada.
@@ -256,6 +269,116 @@ def coletar_amostras() -> dict[str, dict[str, np.ndarray]]:
 
 
 # -----------------------------------------------------------------------------
+# Verificação de independência e análise de sensibilidade
+# -----------------------------------------------------------------------------
+# Nada nesta seção altera os resultados do plano registrado. Ela foi acrescentada
+# depois da coleta, a pedido da orientação, para verificar se algum veredito
+# depende de tratar como independentes medições que a coleta intercalada agrupa
+# em rodadas. A compilação é medida em blocos sequenciais por aplicação
+# (measure-build.sh) e não tem estrutura de rodadas: entra só na verificação de
+# tendência temporal.
+
+METRICAS_INTERCALADAS = [
+    'carga-inicial', 'adicionar', 'atualizar', 'remover', 'alternar', 'memoria-heap',
+]
+
+
+def series_por_repeticao() -> dict[tuple[str, str], pd.Series]:
+    """Valores de cada célula (métrica, framework), indexados pela repetição."""
+    series: dict[tuple[str, str], pd.Series] = {}
+    fontes = [
+        ('runtime.csv', 'tempo_pintura_ms', 1.0, None),
+        ('build-times.csv', 'tempo_ms', 1.0, 'compilacao'),
+        ('memory.csv', 'heap_bytes', 1 / 1_048_576, 'memoria-heap'),
+    ]
+    for nome, coluna, escala, metrica_fixa in fontes:
+        tabela = ler_csv(nome)
+        if tabela is None:
+            continue
+        if metrica_fixa is not None:
+            tabela = tabela.assign(metrica=metrica_fixa)
+        for (metrica, fw), bloco in tabela.groupby(['metrica', 'framework']):
+            series[(metrica, fw)] = bloco.set_index('repeticao')[coluna].sort_index() * escala
+    return series
+
+
+def verificar_independencia(series: dict[tuple[str, str], pd.Series]) -> list[dict]:
+    """Três verificações sobre a independência das observações.
+
+    tendencia_temporal    Spearman entre a ordem da repetição e o valor: deriva.
+    autocorrelacao_lag1   correlação entre repetições consecutivas da célula.
+    correlacao_na_rodada  Spearman entre dois frameworks na mesma rodada. Se for
+                          positiva, tratar as amostras como independentes custa
+                          poder; se for negativa, pode inflar falsos positivos.
+    """
+    linhas: list[dict] = []
+    for metrica in ['compilacao'] + METRICAS_INTERCALADAS:
+        for fw in FRAMEWORKS:
+            serie = series.get((metrica, fw))
+            if serie is None or len(serie) < 3:
+                continue
+            valores = serie.to_numpy()
+            rho, p = stats.spearmanr(serie.index.to_numpy(), valores)
+            linhas.append({
+                'verificacao': 'tendencia_temporal', 'metrica': metrica, 'grupo': fw,
+                'n': len(valores), 'estatistica': float(rho), 'p_valor': float(p),
+            })
+            linhas.append({
+                'verificacao': 'autocorrelacao_lag1', 'metrica': metrica, 'grupo': fw,
+                'n': len(valores),
+                'estatistica': float(np.corrcoef(valores[:-1], valores[1:])[0, 1]),
+                'p_valor': float('nan'),
+            })
+    for metrica in METRICAS_INTERCALADAS:
+        for a, b in PARES:
+            if (metrica, a) not in series or (metrica, b) not in series:
+                continue
+            par = pd.concat([series[(metrica, a)], series[(metrica, b)]], axis=1, join='inner').dropna()
+            rho, p = stats.spearmanr(par.iloc[:, 0], par.iloc[:, 1])
+            linhas.append({
+                'verificacao': 'correlacao_na_rodada', 'metrica': metrica, 'grupo': f'{a} vs {b}',
+                'n': len(par), 'estatistica': float(rho), 'p_valor': float(p),
+            })
+    return linhas
+
+
+def sensibilidade_pareada(series: dict[tuple[str, str], pd.Series]) -> list[dict]:
+    """Repete as comparações com o teste pareado correspondente ao delineamento.
+
+    Friedman como omnibus, com as rodadas como blocos, e Wilcoxon pareado em cada
+    par, com a mesma correção de Holm e a mesma regra do plano registrado: o par
+    a par só roda quando o omnibus é significativo. NÃO registrada previamente.
+    """
+    linhas: list[dict] = []
+    for metrica in METRICAS_INTERCALADAS:
+        if not all((metrica, fw) in series for fw in FRAMEWORKS):
+            continue
+        tabela = pd.concat(
+            [series[(metrica, fw)].rename(fw) for fw in FRAMEWORKS], axis=1, join='inner'
+        ).dropna()
+        fr = stats.friedmanchisquare(*(tabela[fw].to_numpy() for fw in FRAMEWORKS))
+        omnibus = bool(fr.pvalue < ALFA)
+        linhas.append({
+            'metrica': metrica, 'teste': 'Friedman', 'comparacao': ' vs '.join(FRAMEWORKS),
+            'n_rodadas': len(tabela), 'estatistica': float(fr.statistic),
+            'p_valor': float(fr.pvalue), 'p_valor_corrigido': float(fr.pvalue),
+            'significativo': omnibus,
+        })
+        if not omnibus:
+            continue
+        resultados = [stats.wilcoxon(tabela[a], tabela[b]) for a, b in PARES]
+        corrigidos = holm_bonferroni([float(r.pvalue) for r in resultados])
+        for (a, b), r, pc in zip(PARES, resultados, corrigidos):
+            linhas.append({
+                'metrica': metrica, 'teste': 'Wilcoxon pareado', 'comparacao': f'{a} vs {b}',
+                'n_rodadas': len(tabela), 'estatistica': float(r.statistic),
+                'p_valor': float(r.pvalue), 'p_valor_corrigido': float(pc),
+                'significativo': bool(pc < ALFA),
+            })
+    return linhas
+
+
+# -----------------------------------------------------------------------------
 # Relatório
 # -----------------------------------------------------------------------------
 
@@ -328,7 +451,7 @@ def main() -> int:
                 f"### {ROTULOS_METRICA.get(metrica, metrica)} ({unidade})",
                 '',
                 tabela_markdown(bloco[[
-                    'framework', 'n', 'media', 'mediana', 'desvio_padrao',
+                    'framework', 'n', 'media', 'mediana', 'iqr', 'desvio_padrao',
                     'coef_variacao_pct', 'minimo', 'maximo', 'p95',
                     'ic95_inferior', 'ic95_superior',
                 ]]),
@@ -351,6 +474,39 @@ def main() -> int:
                 'p_valor', 'p_valor_corrigido', 'significativo',
                 'delta_cliff', 'tamanho_efeito',
             ]], casas=4),
+            '',
+        ]
+
+    # --- Independência e sensibilidade (não registradas previamente) ---------
+    series = series_por_repeticao()
+    checagens = verificar_independencia(series)
+    if checagens:
+        independencia = pd.DataFrame(checagens)
+        independencia.to_csv(PROCESSADO / 'independence-checks.csv', index=False)
+        print(f'  independence-checks.csv  ({len(independencia)} linhas)')
+
+    pareados = sensibilidade_pareada(series)
+    if pareados:
+        sens = pd.DataFrame(pareados)
+        if linhas_testes:
+            registrado = pd.DataFrame(linhas_testes)[['metrica', 'comparacao', 'significativo']]
+            sens = sens.merge(
+                registrado.rename(columns={'significativo': 'significativo_plano_registrado'}),
+                on=['metrica', 'comparacao'], how='left',
+            )
+            sens['coincide'] = sens['significativo'] == sens['significativo_plano_registrado']
+        sens.to_csv(PROCESSADO / 'sensitivity-tests.csv', index=False)
+        print(f'  sensitivity-tests.csv  ({len(sens)} linhas)')
+
+        partes += [
+            '## Análise de sensibilidade (não registrada previamente)',
+            '',
+            'Friedman como omnibus e Wilcoxon pareado em cada par, com correção de '
+            'Holm, nas métricas intercaladas por rodada. Os resultados reportados na '
+            'monografia são os do plano registrado; esta tabela verifica se algum '
+            'veredito depende da escolha entre teste independente e pareado.',
+            '',
+            tabela_markdown(sens, casas=4),
             '',
         ]
 
